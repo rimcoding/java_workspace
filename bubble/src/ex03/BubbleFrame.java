@@ -1,4 +1,4 @@
-package ex23;
+package ex03;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -17,6 +17,10 @@ public class BubbleFrame extends JFrame {
 		initData();
 		setInitLayout();
 		addEventListener();
+		
+		// player 메모리에 올라 간 상태
+		// 약속 run 메서드안에 동작을 처리한다.
+		new Thread(new BackgroundPlayerService(player)).start();
 	}
 
 	private void initData() {
@@ -44,10 +48,18 @@ public class BubbleFrame extends JFrame {
 				// 38, 40 , 39, 41 ...
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_LEFT:
-					player.left();
+					// 여러번 누르더라도 한번만 호출 되게 방어적 코드 작성 !
+					// false
+					// true <-- 변경 !!
+					// 한번더 누르면 현재 상태값이 true이기 때문에 메소드가 안들어간다.
+					if (player.isLeft() == false && player.isLeftWallCrash() == false) {
+						player.left();
+					}
 					break;
 				case KeyEvent.VK_RIGHT:
-					player.right();
+					if (player.isRight() == false && player.isRightWallCrash() == false) {
+						player.right();
+					}
 					break;
 				case KeyEvent.VK_UP:
 					player.up();

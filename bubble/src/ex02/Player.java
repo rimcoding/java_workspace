@@ -118,7 +118,7 @@ public class Player extends JLabel implements Moveable {
 			
 			@Override
 			public void run() {
-				for(int i = 0; i < 120 / JUMPSPEED ; i++) {
+				for(int i = 0; i < 130 / JUMPSPEED ; i++) {
 					y = y - JUMPSPEED;
 					setLocation(x , y);
 					
@@ -146,7 +146,7 @@ public class Player extends JLabel implements Moveable {
 			@Override
 			public void run() {
 
-				for(int i = 0; i <120/JUMPSPEED; i++ ) {
+				for(int i = 0; i <130/JUMPSPEED; i++ ) {
 					y = y + JUMPSPEED;
 					setLocation(x,y);
 					try {

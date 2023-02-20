@@ -1,4 +1,4 @@
-package ex23;
+package ex03;
 
 public interface Moveable {
 	public abstract void left();
