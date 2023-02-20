@@ -12,8 +12,4 @@ public class ToyCar implements RemoteController {
 		System.out.println("장난감 차를 끕니다.");
 	}
 
-	@Override
-	public void SoundOn() {
-		System.out.println("두두두두두~~~");
-	}
 }

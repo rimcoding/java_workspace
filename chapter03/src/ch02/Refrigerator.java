@@ -1,6 +1,7 @@
 package ch02;
 
-public class Refrigerator extends HomeAppliances implements RemoteController {
+public class Refrigerator extends HomeAppliances 
+implements RemoteController, SoundEffect {
 
 	@Override
 	public void turnOn() {
@@ -13,8 +14,8 @@ public class Refrigerator extends HomeAppliances implements RemoteController {
 	}
 
 	@Override
-	public void SoundOn() {
-		System.out.println("띠리리리링");
+	public void soundOn() {
+		System.out.println("띠리리리링~~ 냉장고 문열림");
 	}
 
 

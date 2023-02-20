@@ -14,6 +14,7 @@ public class MainTest1 {
 		computers[0] = new DeskTop();
 		computers[1] = new DeskTop();
 		computers[2] = new MyNoteBook();
+		
 		for (int i = 0; i < computers.length; i++) {
 			if (computers[i] != null) {
 				computers[i].display();

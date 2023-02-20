@@ -11,4 +11,17 @@ public abstract class Animal {
 	//추상 메서드 이다.
 	//추상 메서드가 없어도 선언가능
 	public abstract void hunt();
+	
+	public static void main(String[] args) {
+	
+		Animal animal = new Animal() {
+			
+			@Override
+			public void hunt() {
+				// TODO Auto-generated method stub
+				
+			}
+		};
+		
+	}
 }

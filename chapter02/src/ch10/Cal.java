@@ -11,17 +11,7 @@ public class Cal {
 		System.out.println("부모 메서드");
 		return n1 * n2;
 	}
-	//코드 테스트
-	public static void main(String[] args) {
-		Cal2 cal2 = new Cal2();
-		//cal2에 multiply 메서드가 있는지 확인
-		//cal2에 multiply 없다면 부모 클래스에 있는 메서드를 확인한다.
-		//부모에 메서드 multiply 재 정의 한다면 --> 오버 라이드라고 한다.
-		//System.out.println(cal2.multiply(100, 100));
-		System.out.println(cal2.multiply(0, 100));
-	}
 }
-//복사 붙여넣기 하는것보다 효율적인 방법
 class Cal2 extends Cal	{
 	
 	public int minus(int n1,int n2) {
@@ -44,5 +34,4 @@ class Cal2 extends Cal	{
 		System.out.println("n1 :"+n1+"을 입력 하였습니다.");
 		return super.sum(n1, n2);
 	}
-	
 }

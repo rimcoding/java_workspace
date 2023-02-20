@@ -21,6 +21,7 @@ public class fruitMainTest {
 		//반복문
 		// instanceof
 		for(int i = 0; i <fruits.length; i++ ) {
+				fruits[i].showInfo();
 				if(fruits[i] instanceof Banana) {
 				//바나나 타입 맞다면 여기 코드 안으로 들어 온다.
 				//다운 캐스팅 가능
@@ -28,7 +29,16 @@ public class fruitMainTest {
 					System.out.println("바나나 원산지" + bananaOrigin);
 				}
 			// 바나나 이면 원산지를 출력 하시오.
-			System.out.println("------------");
+			if (fruits[i] instanceof Banana) {
+				String origin = ((Banana)fruits[i]).origin;
+				System.out.println("바나나 원산지 : " +origin);
+			}
+			 System.out.println("================");
+				// 주소값 == 주소값
+			if (fruits[i] == fruit1) {
+				String bananaOrigin2 = ((Banana) fruits[i]).origin;
+				System.out.println(bananaOrigin2);
+			}
 		}
 	}
 

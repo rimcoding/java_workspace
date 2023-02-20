@@ -19,6 +19,8 @@ public class EmployeeMainTest {
 		// 멤버 변수를 활용해서 사용해야 한다.
 		System.out.println(Employee.serialNum);
 		
+		//이순신 사원번호 확인 가능
+		System.out.println(employee1.getEmploteeId());
 		//홍길동 사원번호 확인 가능
 		System.out.println(employee2.getEmploteeId());
 		//티모에 사원번호 확인 가능

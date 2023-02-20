@@ -1,8 +1,7 @@
 package ch02;
 
-public class ToyRobot implements RemoteController{
+public class ToyRobot implements RemoteController,SoundEffect{
 
-		//자동완성으로 만들면 잘못된 설계이다.
 		
 		String name;
 
@@ -17,8 +16,8 @@ public class ToyRobot implements RemoteController{
 		}
 
 		@Override
-		public void SoundOn() {
-			System.out.println("띠리리리링~~~");
+		public void soundOn() {
+			System.out.println("두두두두두두두~~~");			
 		}
 		
 		

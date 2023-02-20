@@ -2,8 +2,7 @@ package ch08;
 
 /**
  * 
- * @author GGG
- *	static 변수와 멤버 변수에 활용 !!
+ * @author static 변수와 멤버 변수에 활용 !!
  *
  */
 public class Employee {

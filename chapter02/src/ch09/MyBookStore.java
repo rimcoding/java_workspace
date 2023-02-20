@@ -31,14 +31,20 @@ public class MyBookStore  {
 			System.out.println("1.저장 2.전체조회 3.선택조회 4.전체삭제 0.종료");
 			String selectedNumber = scanner.nextLine();
 			if (selectedNumber.equals(SAVE)) {
-				save(scanner, books, lastIndexNumber);
+				//저장
+				lastIndexNumber = save(scanner, books, lastIndexNumber);
 			} else if (selectedNumber.equals(SEARCH_ALL)) {
+				//전체 조회
 				readAll(books);
 			} else if (selectedNumber.equals(SEARCH_BY_TITLE)) {
+				//선택조회
 				readByTitle(scanner, books);
 			} else if (selectedNumber.equals(DELETE_ALL)) {
+				//전체 삭제
 				deleteAll(books);
 			} else if (selectedNumber.equals(END)) {
+				//종료
+				System.out.println(">종료하기<");
 				flag = false;
 			} else {
 				System.out.println("잘못된 입력 값 입니다.\n다시 선택바람");
@@ -47,22 +53,24 @@ public class MyBookStore  {
 	}
 
 	// 저장하기 기능
-	public static void save(Scanner scanner, Book[] books, int lastIndexNumber) {
+	public static int save(Scanner scanner, Book[] books, int lastIndexNumber) {
 		System.out.println(">>저장하기<<");
 		System.out.println("책 제목을 입력하세요\n");
 		String bookTitle = scanner.nextLine();
 		System.out.println("저자 이름을 입력하세요\n");
 		String bookAuthor = scanner.nextLine();
-		Book book = new Book(bookTitle, bookAuthor);
-		books[lastIndexNumber] = book;
+		
+		books [lastIndexNumber] = new Book(bookTitle, bookAuthor);
 		lastIndexNumber++;
 		System.out.println(bookTitle + " 책을 저장했습니다!");
+		return lastIndexNumber;
 	}
 
 	// 전체 조회하기 기능
 	public static void readAll(Book[] books) {
 		System.out.println(">>전체조회하기<<");
 		for (int i = 0; i < books.length; i++) {
+			//타이틀,이름
 			if (books[i] != null) {
 				System.out.println(books[i].getTitle() + "," + books[i].getAuthor());
 			}
@@ -75,10 +83,13 @@ public class MyBookStore  {
 		System.out.println(">>선택조회하기<<");
 		System.out.println(">>책 제목을 입력해주세요<<");
 		String bookTitle = scanner.nextLine();
+		
 		boolean isFined = false;
 		for (int i = 0; i < books.length; i++) {
+			// 타이틀, 이름
 			if (books[i] != null) {
 				if (books[i].getTitle().equals(bookTitle)) {
+					// 찾았다.
 					System.out.println(books[i].getTitle() + "," + books[i].getAuthor());
 					isFined = true;
 					break;
@@ -94,14 +105,11 @@ public class MyBookStore  {
 	public static void deleteAll(Book[] books) {
 		System.out.println(">>전체삭제하기<<");
 		for (int i = 0; i < books.length; i++) {
+			//타이틀 , 이름
 			if (books[i] != null) {
 				books[i] = null;
 			}
 		}
 	}
 	
-	//저장하기
-	public static void save() {
-		
-	}
 }
