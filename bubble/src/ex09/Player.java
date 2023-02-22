@@ -1,4 +1,4 @@
-package ex08;
+package ex09;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;

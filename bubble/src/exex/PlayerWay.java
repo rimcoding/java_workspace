@@ -1,4 +1,4 @@
-package ex08;
+package exex;
 
 // enum 타입을 사용하는 이유 (가독성)
 //PlayerWay.LEFT , PlayerWay.RIGHT 이런식으로 사용할 수 있다.

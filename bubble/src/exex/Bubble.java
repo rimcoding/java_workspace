@@ -1,4 +1,4 @@
-package ex08;
+package exex;
 
 import java.util.Iterator;
 
@@ -135,21 +135,8 @@ public class Bubble extends JLabel implements Moveable {
 				e.printStackTrace();
 			}
 		}
-		clearBubble();
+		
 		
 	}
-	//메서드 행위(동사) -> (목적어)
-	private void clearBubble() {
-		try {
-			Thread.sleep(3000);
-			setIcon(bomb);
-			Thread.sleep(500);
-			//this.setVisible(false); //화면에는 안보이는데 메모리에는 남아있음
-			setIcon(null);
-			//터진다음에 0.5초 다음에 그림을 지우기
-			//repaint(); //전부다 다시 그린다. (과부하)
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
+	
 }

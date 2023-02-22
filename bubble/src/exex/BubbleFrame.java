@@ -1,4 +1,4 @@
-package ex08;
+package exex;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -8,14 +8,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-//** main 가지는 클래스는 프로그램에 사용하는 참조 변수를 다 알 수 있다 **
 public class BubbleFrame extends JFrame {
+
 	private JLabel backgroundMap;
 	private Player player;
-
-	//this(주소값)을 mContext에 담아둔다.
-	private BubbleFrame mContext = this;
-	
 
 	public BubbleFrame() {
 		initData();
@@ -33,9 +29,7 @@ public class BubbleFrame extends JFrame {
 		setContentPane(backgroundMap);
 		setSize(1000, 640);
 
-		// 1.부모에 주소값을 자식 객체한테 던져 주면 된다.
-		// 2.콜백메서드 활용해서 구현할 수 있다.
-		player = new Player(mContext);
+		player = new Player();
 	}
 
 	private void setInitLayout() {
@@ -68,18 +62,15 @@ public class BubbleFrame extends JFrame {
 					}
 					break;
 				case KeyEvent.VK_UP:
-					// 플레이어가 up == false
-					// 플레이어가 down == false;
-					if(!player.isUp() && !player.isDown()) {
-						player.up();
-					}
+					player.up();
 					break;
 				case KeyEvent.VK_DOWN:
 					player.down();
 					break;
 				case KeyEvent.VK_SPACE:
-					player.attack();
-					// player.attack();
+					// 1단계
+					Bubble bubble = new Bubble(player);
+					add(bubble);
 					break;
 
 				}
@@ -108,6 +99,5 @@ public class BubbleFrame extends JFrame {
 	// 프로그램에서 사용하는 모든 참조값을 접근 할 수가 있다.
 	public static void main(String[] args) {
 		new BubbleFrame();
-		
 	} // end of main
 } // end of class

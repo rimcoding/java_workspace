@@ -197,9 +197,9 @@ public class Player extends JLabel implements Moveable {
 				for(int i = 0; i < 130 / JUMPSPEED ; i++) {
 					y = y - JUMPSPEED;
 					setLocation(x , y);
-					
+					 
 					try {
-						Thread.sleep(5);
+						Thread.sleep(3);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}

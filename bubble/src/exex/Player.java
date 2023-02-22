@@ -1,12 +1,10 @@
-package ex08;
+package exex;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class Player extends JLabel implements Moveable {
 
-	BubbleFrame mContext;
-	
 	private int x;
 	private int y;
 	private ImageIcon playerR , playerL;
@@ -33,8 +31,7 @@ public class Player extends JLabel implements Moveable {
 	//setter 메서드 만들기 left, right
 	
 	
-	public Player(BubbleFrame mContext) {
-		this.mContext = mContext;
+	public Player() {
 		initData();
 		setInitLayout();
 	}
@@ -227,26 +224,22 @@ public class Player extends JLabel implements Moveable {
 				while(down) {
 					y = y+ JUMPSPEED;
 					setLocation(x,y);
-					
+					down = false;
 					try {
-						//상대방이 쉬고 있는 타임에 뚫고 들어가는 버그가 생길수 있다.
+						//상대방이 쉬고 있는 타임에 뚫고 들어가는 버그가 생길수 있으므로
+						//적게 쉬어서 그 버그를 방지한다.
 						Thread.sleep(3);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
 				} //end of while
-				down = false;
+				
 				
 				// 상태값 다룰 때는 상황이 변하면 초기화 처리를 잘 해줘야 한다.
 			}
 		}).start();
 	}
 	
-	public void attack() {
-		
-		Bubble bubble = new Bubble(this);
-		//부모에 있는 .add();
-		mContext.add(bubble);
-	}
+	
 	
 }

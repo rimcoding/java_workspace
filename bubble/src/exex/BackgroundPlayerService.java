@@ -1,4 +1,4 @@
-package ex07;
+package exex;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
