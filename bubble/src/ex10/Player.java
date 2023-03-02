@@ -187,7 +187,7 @@ public class Player extends JLabel implements Moveable {
 
 	@Override
 	public void up() {
-		System.out.println("점프 ! ");
+		//System.out.println("점프 ! ");
 		up = true;
 		new Thread(new Runnable() {
 			
@@ -244,7 +244,7 @@ public class Player extends JLabel implements Moveable {
 	
 	public void attack() {
 		
-		Bubble bubble = new Bubble(this);
+		Bubble bubble = new Bubble(mContext);
 		//부모에 있는 .add();
 		mContext.add(bubble);
 	}

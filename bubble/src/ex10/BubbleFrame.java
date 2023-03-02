@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 
 //** main 가지는 클래스는 프로그램에 사용하는 참조 변수를 다 알 수 있다 **
 public class BubbleFrame extends JFrame {
+	
 	private JLabel backgroundMap;
 	private Player player;
 	private Enemy enemy;
@@ -25,6 +26,14 @@ public class BubbleFrame extends JFrame {
 		// player 메모리에 올라 간 상태
 		// 약속 run 메서드안에 동작을 처리한다.
 		new Thread(new BackgroundPlayerService(player)).start();
+	}
+	
+	public Player getPlayer() {
+		return player;
+	}
+	
+	public Enemy getEnemy() {
+		return enemy;
 	}
 
 	private void initData() {

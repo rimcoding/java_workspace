@@ -87,7 +87,6 @@ public class BubbleFrame extends JFrame {
 				}
 			}
 			
-			
 		});
 	}
 

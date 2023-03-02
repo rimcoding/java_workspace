@@ -5,6 +5,10 @@ import javax.swing.JLabel;
 
 public class Enemy extends JLabel implements Moveable {
 
+	
+	//살아있는상태, 물방울에 죽은 상태
+	private int state;
+	
 	//위치 상태
 	private int x;
 	private int y;
@@ -14,6 +18,7 @@ public class Enemy extends JLabel implements Moveable {
 	private boolean right;
 	private boolean up;
 	private boolean down;
+	
 
 	//적군 속도 상태
 	private final int SPEED = 3;
@@ -30,10 +35,7 @@ public class Enemy extends JLabel implements Moveable {
 	setInitLayout();
 	
 	//지울 예정
-	up();
 	}
-	
-	
 	
 	private void initData() {
 		enemyR = new ImageIcon("images/enemyR.png");
@@ -45,12 +47,22 @@ public class Enemy extends JLabel implements Moveable {
 		up = false;
 		down = false;
 		enemyWay = EnemyWay.LEFT;
+		state = 0;
 	}
 
 	private void setInitLayout() {
 		setIcon(enemyL);
 		setSize(50,50);
 		setLocation(x,y);
+	}
+	
+
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
 	}
 
 	@Override

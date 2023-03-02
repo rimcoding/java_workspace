@@ -2,6 +2,7 @@ package ex10;
 
 import java.util.Iterator;
 
+import javax.imageio.stream.MemoryCacheImageOutputStream;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -26,12 +27,17 @@ public class Bubble extends JLabel implements Moveable {
 	private ImageIcon bubbled;	//적을 가둔 상태 이미지
 	private ImageIcon bomb;	//물방울이 터진 상태 이미지
 	
+	private BubbleFrame mContext;
+	
 	private Player player;
+	
 	private BackgroundBubbleService backgroundBubbleService;
 	
 	// 버블은 Player에 의존하고 있다.
-	public Bubble(Player player) {
-		this.player = player;
+	public Bubble(BubbleFrame mContext) {
+		this.mContext = mContext;
+		
+		//this.player = player;
 		initData();
 		setInitLayout();
 		backgroundBubbleService = new BackgroundBubbleService(this);
@@ -51,8 +57,8 @@ public class Bubble extends JLabel implements Moveable {
 
 	private void setInitLayout() {
 		//플레이어가 있는 위치에 태어나야 한다.
-		x = player.getX();
-		y = player.getY();
+		x = mContext.getPlayer().getX();
+		y = mContext.getPlayer().getY();
 		setIcon(bubble);
 		setSize(50,50);
 		setLocation(x,y);
@@ -66,7 +72,7 @@ public class Bubble extends JLabel implements Moveable {
 			
 			@Override
 			public void run() {
-			if (player.getpWay() == PlayerWay.LEFT){
+			if (mContext.getPlayer().getpWay() == PlayerWay.LEFT){
 				//왼쪽 방향을 보고 있다.
 				left();
 			}else {
@@ -89,7 +95,25 @@ public class Bubble extends JLabel implements Moveable {
 			if (backgroundBubbleService.leftWall()) {
 				break;
 			}
-			try {
+			//적군 위치 감지 - 범위 값 계산 --> + --> 절대값 구해서
+			//x , y <---- 적군 
+			//System.out.println("적군 x위치 : " + mContext.getEnemy().getX());
+			// 절대값 계산 
+			//물방울에 x 좌표값이 90
+			//적군에 x 좌표값이 150
+			//60 차이 나는 상태
+			if(Math.abs(x - mContext.getEnemy().getX()) < 10
+				&& Math.abs(y - mContext.getEnemy().getY()) < 50)	 {
+				//적군이 살아있는 상태에서만 crash() 호출 시킬 예정
+				if(mContext.getEnemy().getState() == 0) {
+					crash();
+				}
+				
+				}
+			
+			
+			
+ 			try {
 				Thread.sleep(1);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -110,6 +134,12 @@ public class Bubble extends JLabel implements Moveable {
 			if (backgroundBubbleService.rightWall()) {
 				break;
 			}
+			if(Math.abs(x - mContext.getEnemy().getX()) < 10
+					&& Math.abs(y - mContext.getEnemy().getY()) < 50)	 {
+				if(mContext.getEnemy().getState() == 0) {
+					crash();
+				}
+					}
 			try {
 				Thread.sleep(1);
 			} catch (InterruptedException e) {
@@ -129,6 +159,7 @@ public class Bubble extends JLabel implements Moveable {
 			if (backgroundBubbleService.topWall()) {
 				break;
 			}
+			
 			try {
 				Thread.sleep(1);
 			} catch (InterruptedException e) {
@@ -152,4 +183,13 @@ public class Bubble extends JLabel implements Moveable {
 			e.printStackTrace();
 		}
 	}
-}
+	public void crash() {
+		//0,1 물방울
+		mContext.getEnemy().setState(1);
+		state = 1;
+		setIcon(bubbled);
+		//heap 메모리에서는 아직 남아 있다. (가비지컬렉터가 알아서 제거 해 준다)
+		mContext.remove(mContext.getEnemy());
+		mContext.repaint();
+	}
+} //end of class
